@@ -124,7 +124,7 @@ async function setEmpleado(e){
       .then(res =>  res.text())
       .then(res=>{
        if(res){
-        aparecerTabla
+       
         modalset.show();
         
        }
@@ -157,6 +157,19 @@ function aparecerTabla(){
 
     divFormulario.classList.remove('movement_from_back');
     divFormulario.classList.remove('movement_from_face');
+    
 
 }
+
+document.getElementById('cerrarRegistro').addEventListener('click',function(){
+
+    getEmpleados();
+    aparecerTabla();
+})
+
+document.getElementById('cerrarDelete').addEventListener('click',function(){
+
+    getEmpleados();
+    aparecerTabla();
+})
 

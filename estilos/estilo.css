@@ -141,40 +141,6 @@ body{
         transform: scale(0.5);
     }
 }
- /* 
-
-.movement_disapear{
-    display: none;
-    -webkit-animation: movement_disapear 300ms ease-in-out;
-    -moz-animation: movement_disapear 300ms ease-in-out;
-    -ms-animation: movement_disapear 400ms ease-in-out;
-    -o-animation: movement_disapear 400ms ease-in-out;
-    animation: movement_disapear 400ms ease-in-out;
+.bi{
+    cursor: pointer;
 }
-
-@-webkit-keyframes movement_disapear {
-    from {
-        display: none;
-        
-        -webkit-transform: scale(0.5);
-        -moz-transform: scale(0.5);
-        -ms-transform: scale(0.5);
-        -o-transform:scale(0.5);
-        transform: scale(0.5);
-    }
-    to {
-        display: none;
-        -webkit-transform:scale(1);
-        -moz-transform: scale(1);
-        -ms-transform:scale(1);
-        -o-transform: scale(1);
-        transform: scale(1);
-    }
-}
-
-.desaparecer{
-
-    display: none;
-}
-  */
- 

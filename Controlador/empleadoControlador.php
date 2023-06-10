@@ -36,7 +36,7 @@ class empleadoControlador{
             <td>{$res -> area}</td>
             <td>{$res -> boletin}</td>
             <td>{$res -> rol}</td>
-            <td><i class='bi bi-pencil-square editar' data-email={$res -> email}></td>
+            <td><i class='bi bi-pencil-square editar' data-email={$res -> email} ></td>
             <td><i class='bi bi-trash3 borrar' data-email={$res -> email}></i></td>
         </tr>";
 

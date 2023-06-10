@@ -102,7 +102,6 @@ class EmpleadoModel extends baseModel
             $query -> execute(); 
             $result = $query -> fetchAll(PDO::FETCH_OBJ); 
 
-            echo "sese";
             return true;
 
         } catch (\Throwable $th) {
