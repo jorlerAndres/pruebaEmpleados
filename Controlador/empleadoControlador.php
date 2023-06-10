@@ -13,8 +13,6 @@ class empleadoControlador{
  }
  public function getEmpleados(){
         
- 
-  
     $data=isset($_GET['email']) ? $this->getEmpleadosByEmail($_GET['email']) :  $this->getEmpleadosAll();
    
     echo $data;
@@ -23,12 +21,10 @@ class empleadoControlador{
   public function getEmpleadosAll(){
     
     $data= $this->modelo->getEmpleadosAll();
-
     $tabla= "";
   
     foreach($data as $res) {
 
-      
         $tabla.=  "<tr>
             <td>{$res -> nombre}</td>
             <td>{$res -> email}</td>
@@ -41,7 +37,6 @@ class empleadoControlador{
         </tr>";
 
     }
-
     return $tabla;
 
   }
@@ -49,8 +44,6 @@ class empleadoControlador{
   public function getEmpleadosByEmail($email){
     
     $data= $this->modelo->getEmpleadosByEmail($email);
-
-    
 
     if (is_object($data[0])) {
 
@@ -66,22 +59,18 @@ class empleadoControlador{
 
   public function deleteEmpleado($email){
    
-   $data= $this->modelo->deleteEmpleado($email);
+    $data= $this->modelo->deleteEmpleado($email);
     echo $data;
     
-   
   }
 
   public function setEmpleado($params){
     
-  
-     $data=$_POST['correo']=='si' ? $this->modelo->insertEmpleado($params) :  $this->modelo->updateEmpleado($params);
+    $data=$_POST['correo']=='si' ? $this->modelo->insertEmpleado($params) : $this->modelo->updateEmpleado($params);
     echo $data; 
-     
     
-   }
+  }
 
-  
 }
 
 ?>

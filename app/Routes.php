@@ -20,14 +20,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $empleado->deleteEmpleado($param);
       
         break;
-    case 'PUT':
-
-        $params = file_get_contents("php://input"); 
-        $params=json_decode($params);
-         var_dump($params);
-        //$empleado->deleteEmpleado($param);
-        break;
-
+   
     default:
         # code...
         break;
