@@ -5,7 +5,7 @@
 
 3. utilizar la misma base de datos suministrada con las credenciales de user:root y sin password 
 
- 4.No se utilizo framework, se plaican conocimientos de php 
+ 4.No se utilizo framework, se aplican conocimientos de php 
 
 5. se utilizo bootstrap para complementar las vistas 
 
