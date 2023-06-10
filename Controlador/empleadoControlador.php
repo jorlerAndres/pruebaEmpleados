@@ -23,7 +23,7 @@ class empleadoControlador{
     $data= $this->modelo->getEmpleadosAll();
     $tabla= "";
   
-    foreach($data as $res) {
+    foreach($data as $res) {  
 
         $tabla.=  "<tr>
             <td>{$res -> nombre}</td>
