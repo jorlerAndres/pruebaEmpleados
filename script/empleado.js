@@ -169,6 +169,7 @@ document.getElementById('cerrarRegistro').addEventListener('click',function(){
 
 document.getElementById('cerrarDelete').addEventListener('click',function(){
 
+    console.log("www");
     getEmpleados();
     aparecerTabla();
 })
