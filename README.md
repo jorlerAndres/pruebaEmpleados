@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # pruebaEmpleados
  1. No se requiere conexion a internet
 
@@ -10,3 +11,6 @@
 5. se utilizo bootstrap para complementar las vistas 
 
 6. Para probar el codigo se puede utilizar la misma base de datos suministrada 
+=======
+# pruebaEmpleados
+>>>>>>> 482a8e581d34c57d1bc3bab4c1fc736ee6b22b86
