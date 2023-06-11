@@ -163,6 +163,7 @@ function aparecerTabla(){
 document.getElementById('cerrarRegistro').addEventListener('click',function(){
     getEmpleados();
     aparecerTabla();
+   document.getElementById('id').value='no';
 })
 
 document.getElementById('cerrarDelete').addEventListener('click',function(){
