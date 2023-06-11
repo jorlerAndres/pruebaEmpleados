@@ -6,6 +6,7 @@ let cancelar=document.getElementById("cancelar");
 let modalBorrar=new bootstrap.Modal(document.getElementById('modal_borrar'));
 let modalset=new bootstrap.Modal(document.getElementById('modal_set'));
 let formulario=document.getElementById('formulario');
+
 document.addEventListener("DOMContentLoaded",function(){
    
     getEmpleados();
@@ -17,7 +18,6 @@ formulario.addEventListener('submit',setEmpleado)
   async function getEmpleados(){
     
     let url = "app/Routes.php";
-    
     let response = await fetch(url,{
       method: "GET",
     })
@@ -35,22 +35,21 @@ formulario.addEventListener('submit',setEmpleado)
 
     if(e.target.classList.contains("borrar")){
 
-        let email=e.target.getAttribute("data-email")
-        borrarEmpleado(email);
+        let id=e.target.getAttribute("data-id")
+        borrarEmpleado(id);
     }
     else if(e.target.classList.contains('editar')){
 
-        let email=e.target.getAttribute("data-email")
-        editarEmpleado(email);
+        let id=e.target.getAttribute("data-id")
+        editarEmpleado(id);
         aparecerFormulario();
     }
 
 })
 
-async function editarEmpleado(email){
+async function editarEmpleado(id){
 
-    let url = "app/Routes.php?email="+email;
-   
+    let url = "app/Routes.php?id="+id;
     let response = await fetch(url,{
         method: "GET",
       })
@@ -66,10 +65,9 @@ async function editarEmpleado(email){
 
 function putdataEmpleado(data){
 
-   
     document.getElementById('nombre').value=data.nombre;
     document.getElementById('email').value=data.email;
-    document.getElementById('correo').value=document.getElementById('email').value
+    document.getElementById('id').value=data.id
     document.querySelectorAll('#formulario input[type=checkbox]').forEach(function(checkElement) {
         checkElement.checked = false;
     });
@@ -90,13 +88,12 @@ function putdataEmpleado(data){
 }
 
 
-async function borrarEmpleado(email){
-
+async function borrarEmpleado(id){
    
     let url = "app/Routes.php";
     let response = await fetch(url,{
         method: "DELETE",
-        body: email,
+        body: id,
       })
       .then(res =>  res.text())
       .then(res=>{
@@ -107,16 +104,23 @@ async function borrarEmpleado(email){
       .catch(error => {
           console.log(error);
       });
-
 }
 
 async function setEmpleado(e){
     e.preventDefault();
-   
+    
+    if(!document.getElementById('Desarrollador').checked && 
+       !document.getElementById('Analista').checked &&
+       !document.getElementById('Diseñador').checked){
+       
+        alert('Recuerda elegir al menos un rol');
+        return;
+
+    }
+    
     let url = "app/Routes.php";
     
     let formData = new FormData(formulario);
-   
     let response = await fetch(url,{
         method: "POST",
         body: formData,
@@ -124,15 +128,12 @@ async function setEmpleado(e){
       .then(res =>  res.text())
       .then(res=>{
        if(res){
-       
         modalset.show();
-        
        }
       }) 
       .catch(error => {
           console.log(error);
       });
-
 }
 
 
@@ -154,22 +155,18 @@ function aparecerTabla(){
     divFormulario.classList.add('movement_from_face');
     divTabla.classList.add('movement_from_back');
     divTabla.style='display:block';
-
     divFormulario.classList.remove('movement_from_back');
     divFormulario.classList.remove('movement_from_face');
     
-
 }
 
 document.getElementById('cerrarRegistro').addEventListener('click',function(){
-
     getEmpleados();
     aparecerTabla();
 })
 
 document.getElementById('cerrarDelete').addEventListener('click',function(){
 
-    console.log("www");
     getEmpleados();
     aparecerTabla();
 })

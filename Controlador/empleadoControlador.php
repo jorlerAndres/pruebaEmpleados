@@ -13,7 +13,7 @@ class empleadoControlador{
  }
  public function getEmpleados(){
         
-    $data=isset($_GET['email']) ? $this->getEmpleadosByEmail($_GET['email']) :  $this->getEmpleadosAll();
+    $data=isset($_GET['id']) ? $this->getEmpleadosById($_GET['id']) :  $this->getEmpleadosAll();
    
     echo $data;
  }
@@ -32,8 +32,8 @@ class empleadoControlador{
             <td>{$res -> area}</td>
             <td>{$res -> boletin}</td>
             <td>{$res -> rol}</td>
-            <td><i class='bi bi-pencil-square editar' data-email={$res -> email} ></td>
-            <td><i class='bi bi-trash3 borrar' data-email={$res -> email}></i></td>
+            <td><i class='bi bi-pencil-square editar' data-id={$res -> id} ></td>
+            <td><i class='bi bi-trash3 borrar' data-id={$res -> id}></i></td>
         </tr>";
 
     }
@@ -41,9 +41,9 @@ class empleadoControlador{
 
   }
 
-  public function getEmpleadosByEmail($email){
+  public function getEmpleadosById($id){
     
-    $data= $this->modelo->getEmpleadosByEmail($email);
+    $data= $this->modelo->getEmpleadosById($id);
 
     if (is_object($data[0])) {
 
@@ -54,20 +54,19 @@ class empleadoControlador{
        
         return json_encode($data);
     }
-   
   }
 
-  public function deleteEmpleado($email){
-   
-    $data= $this->modelo->deleteEmpleado($email);
+  public function deleteEmpleado($id){
+    
+    $data= $this->modelo->deleteEmpleado($id);
     echo $data;
     
   }
 
   public function setEmpleado($params){
-    
-    $data=$_POST['correo']=='si' ? $this->modelo->insertEmpleado($params) : $this->modelo->updateEmpleado($params);
-    echo $data; 
+
+     $data=$params['id']=='no' ? $this->modelo->insertEmpleado($params) : $this->modelo->updateEmpleado($params);
+    echo $data;  
     
   }
 
